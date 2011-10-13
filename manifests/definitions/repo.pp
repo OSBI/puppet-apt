@@ -1,28 +1,28 @@
-define apt::repo($ensure, $subdomain = 'repo.analytical-labs.com') {
+define apt::repo($ensure) {
 	include apt::server
 	include apache
 	
-	file { ['/var/www/${subdomain}/htdocs/', '/var/www/${subdomain}/htdocs/.scratch', '/var/www/${subdomain}/htdocs/dists', '/var/www/${subdomain}/htdocs/dists/natty',
-	'/var/www/${subdomain}/htdocs/dists/natty/main', '/var/www/${subdomain}/htdocs/dists/natty/contrib', '/var/www/${subdomain}/htdocs/dists/natty/non-free', '/var/www/${subdomain}/htdocs/dists/natty/main/binary-amd64',
-	'/var/www/${subdomain}/htdocs/dists/natty/contrib/binary-amd64', '/var/www/${subdomain}/htdocs/dists/natty/non-free/binary-amd64', '/var/www/${subdomain}/htdocs/dists/packages', '/var/www/${subdomain}/htdocs/dists/pool/main',
-	 '/var/www/${subdomain}/htdocs/dists/pool/']:
+	file { ['/var/www/${name}/htdocs/', '/var/www/${name}/htdocs/.scratch', '/var/www/${name}/htdocs/dists', '/var/www/${name}/htdocs/dists/natty',
+	'/var/www/${name}/htdocs/dists/natty/main', '/var/www/${name}/htdocs/dists/natty/contrib', '/var/www/${name}/htdocs/dists/natty/non-free', '/var/www/${name}/htdocs/dists/natty/main/binary-amd64',
+	'/var/www/${name}/htdocs/dists/natty/contrib/binary-amd64', '/var/www/${name}/htdocs/dists/natty/non-free/binary-amd64', '/var/www/${name}/htdocs/dists/packages', '/var/www/${name}/htdocs/dists/pool/main',
+	 '/var/www/${name}/htdocs/dists/pool/']:
 	    ensure => directory,
 	    require=> Package['apache2'], 
 	}
 	
-	apache::vhost {"${subdomain}":
+	apache::vhost {"${name}":
   		ensure => present,
 	}
 	
 	
 	
         # Overwrite puppet.conf from puppet module with template specific to master
-        file { '/var/www/${subdomain}/htdocs/apt-ftparchive.conf' :
+        file { '/var/www/${name}/htdocs/apt-ftparchive.conf' :
             content => template('apt/apt-ftparchive.conf.erb'),
         }
 
         # Overwrite puppet.conf from puppet module with template specific to master
-        file { '/var/www/${subdomain}/htdocs/apt-release.conf' :
+        file { '/var/www/${name}/htdocs/apt-release.conf' :
             content => template('apt/apt-release.conf.erb'),
         }
 
