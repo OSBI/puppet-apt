@@ -2,10 +2,10 @@ define apt::repo($ensure, $subdomain = 'repo.analytical-labs.com') {
 	include apt::server
 	include apache
 	
-	file { '/var/www/${subdomain}/htdocs/', '/var/www/${subdomain}/htdocs/.scratch', '/var/www/${subdomain}/htdocs/dists', '/var/www/${subdomain}/htdocs/dists/natty',
+	file { ['/var/www/${subdomain}/htdocs/', '/var/www/${subdomain}/htdocs/.scratch', '/var/www/${subdomain}/htdocs/dists', '/var/www/${subdomain}/htdocs/dists/natty',
 	'/var/www/${subdomain}/htdocs/dists/natty/main', '/var/www/${subdomain}/htdocs/dists/natty/contrib', '/var/www/${subdomain}/htdocs/dists/natty/non-free', '/var/www/${subdomain}/htdocs/dists/natty/main/binary-amd64',
 	'/var/www/${subdomain}/htdocs/dists/natty/contrib/binary-amd64', '/var/www/${subdomain}/htdocs/dists/natty/non-free/binary-amd64', '/var/www/${subdomain}/htdocs/dists/packages', '/var/www/${subdomain}/htdocs/dists/pool/main',
-	 '/var/www/${subdomain}/htdocs/dists/pool/':
+	 '/var/www/${subdomain}/htdocs/dists/pool/']:
 	    ensure => directory,
 	    require=> Package['apache2'], 
 	}
