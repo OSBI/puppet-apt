@@ -28,7 +28,7 @@ define apt::repo($ensure) {
 	file { ["/srv/repo", "/srv/repo/${name}/pool", "/srv/repo/${name}/pool/main", "/srv/repo/${name}/pool/main/s"]:
 		ensure => directory }
 	
-	file { "/var/www/${name}/htdocs/dists/pool/":
-    ensure => "/srv/repo/${name}/pool/"
+	file { "/var/www/${name}/htdocs/dists/pool":
+    ensure => "/srv/repo/${name}/pool"
 	}
 }
