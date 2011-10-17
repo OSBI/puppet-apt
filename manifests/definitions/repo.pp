@@ -26,9 +26,13 @@ define apt::repo($ensure) {
         }
 
 	file { ["/srv/apt", "/srv/apt/${name}/", "/srv/apt/${name}/pool", "/srv/apt/${name}/pool/main", "/srv/apt/${name}/pool/main/s"]:
-		ensure => directory }
+		ensure => directory,
+		owner  => "jenkins",
+    	group  => "users",
+    	mode   => 750
+	}
 	
 	file { "/var/www/${name}/htdocs/dists/pool":
-    ensure => "/srv/apt/${name}/pool"
+    	ensure => "/srv/apt/${name}/pool"
 	}
 }
