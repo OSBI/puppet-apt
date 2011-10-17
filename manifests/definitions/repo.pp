@@ -25,10 +25,10 @@ define apt::repo($ensure) {
             content => template("apt/apt-release.conf.erb"),
         }
 
-	file { ["/srv/repo", "/srv/repo/${name}/", "/srv/repo/${name}/pool", "/srv/repo/${name}/pool/main", "/srv/repo/${name}/pool/main/s"]:
+	file { ["/srv/apt", "/srv/apt/${name}/", "/srv/apt/${name}/pool", "/srv/apt/${name}/pool/main", "/srv/apt/${name}/pool/main/s"]:
 		ensure => directory }
 	
 	file { "/var/www/${name}/htdocs/dists/pool":
-    ensure => "/srv/repo/${name}/pool"
+    ensure => "/srv/apt/${name}/pool"
 	}
 }
