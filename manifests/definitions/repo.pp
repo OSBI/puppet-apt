@@ -26,7 +26,8 @@ define apt::repo($ensure) {
             content => template("apt/apt-release.conf.erb"),
         }
 
-	file { ["/srv/repo", "/srv/repo/${name}/pool", "/srv/repo/${name}/pool/s"] }
+	file { ["/srv/repo", "/srv/repo/${name}/pool", "/srv/repo/${name}/pool/s"]:
+		ensure => directory }
 	
 	file { "/var/www/${name}/htdocs/dists/pool/main":
     ensure => "/srv/repo/${name}/pool"
