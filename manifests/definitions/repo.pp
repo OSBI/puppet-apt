@@ -25,7 +25,8 @@ define apt::repo($ensure) {
             content => template("apt/apt-release.conf.erb"),
         }
 
-	file { ["/srv/apt", "/srv/apt/${name}/", "/srv/apt/${name}/pool", "/srv/apt/${name}/pool/main", "/srv/apt/${name}/pool/main/s"]:
+##needs fixing
+	file { ["/srv/apt", "/srv/apt/${name}/", "/srv/apt/${name}/pool", "/srv/apt/${name}/pool/main", "/srv/apt/${name}/pool/main/s", "/srv/apt/${name}/pool/main/p", "/srv/apt/${name}/pool/main/l"]:
 		ensure => directory,
 		owner  => "jenkins",
     	group  => "users",
