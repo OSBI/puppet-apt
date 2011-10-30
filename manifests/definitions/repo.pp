@@ -4,7 +4,8 @@ define apt::repo($ensure) {
 	notify{"Name is ${name}":}
 	file { ["/var/www/${name}/htdocs/"	, "/var/www/${name}/htdocs/.scratch", "/var/www/${name}/htdocs/dists", "/var/www/${name}/htdocs/dists/natty",
 	"/var/www/${name}/htdocs/dists/natty/main", "/var/www/${name}/htdocs/dists/natty/contrib", "/var/www/${name}/htdocs/dists/natty/non-free", "/var/www/${name}/htdocs/dists/natty/main/binary-amd64",
-	"/var/www/${name}/htdocs/dists/natty/contrib/binary-amd64", "/var/www/${name}/htdocs/dists/natty/non-free/binary-amd64", "/var/www/${name}/htdocs/dists/packages"]:
+	"/var/www/${name}/htdocs/dists/natty/contrib/binary-amd64", "/var/www/${name}/htdocs/dists/natty/non-free/binary-amd64", "/var/www/${name}/htdocs/dists/packages",
+	"/var/www/${name}/htdocs/dists/natty/main/binary-amd64"]:
 	    ensure => directory,
 	    require=> Package["apache2"], 
 	}
