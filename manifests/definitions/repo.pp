@@ -25,11 +25,14 @@ define apt::repo($ensure) {
     content => template("apt/apt-release.conf.erb"),
   }
 
+  file { "/var/www/${name}/htdocs/create.sh" :
+      content => template("apt/create.sh.erb"),
+    }
   ##needs fixing
   file { ["/srv/apt", "/srv/apt/${name}/", "/srv/apt/${name}/pool", "/srv/apt/${name}/pool/main", "/srv/apt/${name}/pool/main/s", "/srv/apt/${name}/pool/main/p", "/srv/apt/${name}/pool/main/l"]:
     ensure => directory,
-    owner  => "jenkins",
-    group  => "users",
+    owner  => "www-data",
+    group  => "www-data",
     mode   => 750
   }
 

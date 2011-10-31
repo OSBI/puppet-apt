@@ -1,0 +1,4 @@
+apt-ftparchive generate apt-ftparchive.conf
+apt-ftparchive -c apt-release.conf release dists/natty/ > dists/natty/Release
+rm dists/natty/Release.gpg
+gpg --sign -ba -o dists/natty/Release.gpg dists/natty/Release
