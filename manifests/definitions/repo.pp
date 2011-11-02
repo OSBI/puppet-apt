@@ -33,7 +33,7 @@ define apt::repo($ensure) {
     ensure => directory,
     owner  => "www-data",
     group  => "www-data",
-    mode   => 750
+    mode   => 760
   }
 
   file { "/var/www/${name}/htdocs/dists/pool":
