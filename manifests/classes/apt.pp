@@ -44,5 +44,6 @@ class apt {
   exec { "apt-get_update":
     command => "apt-get update",
     refreshonly => true,
+    logoutput => true,
   }
 }
