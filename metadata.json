@@ -21,7 +21,7 @@
     "manifests/params.pp": "664d9816ff8a598a931f44bcabb2867e",
     "manifests/ppa.pp": "6456a88254e33a9252e8f95de80c0cd6",
     "manifests/preferences.pp": "ff22f294a9b06bf3fadadb826083129a",
-    "manifests/repo.pp": "6e37c66678eb0cbc68e95dd62447f59f",
+    "manifests/repo.pp": "40c65a3207195475962fbd081a0838ee",
     "manifests/server.pp": "1b70d7b1e88a2b2811ae45ec5c78b007",
     "manifests/sources_list.pp": "937a000473c9e9f64685108504ce382f",
     "manifests/unattended-upgrade.pp": "4c24c6b223d647fe854699f0c956f56c",
