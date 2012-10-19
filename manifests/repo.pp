@@ -1,7 +1,14 @@
 define apt::repo($ensure) {
-  include apt::server
   include apache
   notify{"Name is ${name}":}
+
+ package { 'apache2':
+    ensure => present,
+  } ->
+
+  package { 'apt-utils':
+    ensure => present,
+  } ->
    apache::vhost {"${name}":
     ensure => present,
   }
